@@ -9,23 +9,32 @@ insert x (first:rest)
   | x <= first = x:first:rest
   | otherwise = first:insert x rest
 
+sort_inner :: Ord a => [a] -> [a] -> [a]
+sort_inner [] (first:rest) = (first:rest)
+sort_inner (first:rest) (second:all) = sort_inner (rest) (insert first (second:all))
 
-sort :: Ord a => [a] -> [a] -> [a]
-sort [] [] = []
-sort [] [x] = [x]
-sort [] (x:rest) = x:rest
-sort [x] [] = [x]
-sort [x] [y] = insert x [y]
-sort [y] (x:xs) = insert y (x:xs)
-sort [x, y] [] = if x > y then [y, x] else [x, y]
-sort [x, y] (first:rest) = insert y (insert x (first:rest))
-sort (first:second:rest) [] = sort rest (insert second (insert first [])) 
-sort (first:second:rest) [x] = sort rest (insert second (insert first [x])) 
-sort (first:second:rest) (x:sorted) = sort rest (insert second (insert first (x:sorted))) 
+sort :: (Ord a) => [a] -> [a]
+sort [] = []
+sort [x] = [x]
+sort (first:rest) = sort_inner rest [first]
 
 
-sort_outer :: (Ord a) => [a] -> [a]
-sort_outer [] = sort [] []
-sort_outer [x] = sort [x] []
-sort_outer (x:xs) = sort (x:xs) []
+optional_func :: Either (Int, [Int]) ([Int], Int) -> Integer
+optional_func g [] = 1
+optional_func [] g = 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
