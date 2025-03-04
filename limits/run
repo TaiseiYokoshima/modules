@@ -1,0 +1,29 @@
+#!/bin/fish
+
+set fish_exit_on_failure 1
+
+set file $argv[1]
+
+
+set tokens "$(./hwhile -u $file)"
+
+set tokens "[$tokens, $argv[2]]"
+
+
+set flags "$argv[3]"
+
+
+./hwhile $flags u.while $tokens
+
+
+
+
+
+
+
+
+
+
+
+
+

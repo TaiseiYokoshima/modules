@@ -1,0 +1,10 @@
+main read X {
+  X := [2,3];
+
+  foreach x in X {
+    Y := nil
+  }
+
+  X := X
+
+} write Y

@@ -1,0 +1,29 @@
+concat read L {
+  Y := nil;
+
+// iterate and build the list
+  while L {
+    I := hd L;
+
+    
+    while I {
+      C := hd I;
+      Y := cons C Y;
+
+      I := tl I
+    };
+
+    L := tl L
+  }; 
+
+
+// reverse the rseult
+  R := nil;
+  while Y {
+    R := cons hd Y R;
+    Y := tl Y
+  };
+
+  Y := R
+}
+write Y
